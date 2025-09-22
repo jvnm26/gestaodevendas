@@ -32,19 +32,12 @@ if (isset($_POST['submit'])) {
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -61,20 +54,14 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg  navbar-light sticky-top px-4 px-lg-5">
-        <h1 class="m-0">Venda</h1>
-        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="menu.php" class="nav-item nav-link active">Menu</a>
-                <a href="logout.php" class="nav-item nav-link active">Sair</a>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+    <!-- Aqui é o Nome da Empresa e abaixo os botões Menu e Sair para voltar ou sair do sistema -->
+                <div class="col" style="margin-left: 200px; margin-top: 40px">
+                    <h1>Superar</h1>
+                    <div>
+                        <a href="menu.php"><strong style="font-size: 20px;">Menu</strong></a><br><br>
+                        <a href="logout.php"><strong style="font-size: 20px;">Sair</strong></a><br><br>
+                    </div>
+                </div>
 
     <!-- Page Header Start -->
     <div class="container-form-post">
@@ -134,7 +121,6 @@ if (isset($_POST['submit'])) {
                         }
                         ?>
                     </div>
-
                     <!-- Quantidade -->
                     <div class="mb-3">
                         <label for="quantidade" class="form-label">Quantidade vendida:</label>
@@ -157,7 +143,7 @@ if (isset($_POST['submit'])) {
                         <label for="preco" class="form-label">Preço Venda:</label>
                         <input type="number" name="preco" class="form-control" step="0.01" required>
                     </div>
-
+                    
                     <!-- Botões -->
                     <div class="text-center mt-4">
                         <a href="vendaselect.php" class="btn btn-voltar">Voltar</a>
