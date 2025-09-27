@@ -19,18 +19,21 @@ $sql = "select v.id, p.nome produto, ve.nome vendedor, cli.nome cliente,
 $pesqvend = '';
 $pesqcliente = '';
 $pesqproduto = '';
-$pesqdata = '';
+$pesqdata1 = '';
+$pesqdata2 = '';
 // Algoritmo que identifica a ação do botão submit, declara as variáveis anteriores ao valor que usuário.
 if (isset($_POST['submit'])) {
     $pesqvend = mysqli_real_escape_string($con, $_POST['pesqvend']);
     $pesqcliente = mysqli_real_escape_string($con, $_POST['pesqcliente']);
     $pesqproduto = mysqli_real_escape_string($con, $_POST['pesqproduto']);
-    $pesqdata = mysqli_real_escape_string($con, $_POST['pesqdata']);
+    $pesqdata1 = mysqli_real_escape_string($con, $_POST['pesqdata1']);
+    $pesqdata2 = mysqli_real_escape_string($con, $_POST['pesqdata2']);
     // Aqui é para trocar as / na data para - e trocar as posições dos números, ficando 0000-00-00 (padrão MYSQL)
-    $pesqdata = implode("-", array_reverse(explode("/", $pesqdata)));
+    $pesqdata1 = implode("-", array_reverse(explode("/", $pesqdata1)));
+    $pesqdata2 = implode("-", array_reverse(explode("/", $pesqdata2)));
     // Depois de todos os valores declarados, será feito outro SQL porém com o filtro de pesquisa.
     $sql = $sql . " where ve.nome like '%$pesqvend%' and p.nome like '%$pesqproduto%' and 
-    cli.nome like '%$pesqcliente%' and v.datavenda like '%$pesqdata%'";
+    cli.nome like '%$pesqcliente%' and v.datavenda between '$pesqdata1' and '$pesqdata2'";
 }
 // Aqui transfirá o resultado do $sql para a variável result
 $result = mysqli_query($con, $sql);
@@ -248,11 +251,10 @@ $result = mysqli_query($con, $sql);
         .form-row input.data-input {
             width: 130px;
             font-family: monospace;
-            margin-right: 210px;
+            margin-right: 0px;
         }
         
         .col input[type="date"] {
-            max-width: 150px;
             font-family: monospace;
         }
         .data-input {
@@ -262,6 +264,13 @@ $result = mysqli_query($con, $sql);
 
         .col input[type="text"] {
             max-width: 740px;
+        }
+        /* Sim meio específico, mas é para o h5 "ao" na parte Data */
+        .form-row h5.between-inputs {
+            width: auto;
+            margin: 0 8px;
+            padding-right: 0;
+            text-align: center;
         }
         /* Aqui acaba todo Style do vendaselect */
     </style>
@@ -309,11 +318,17 @@ $result = mysqli_query($con, $sql);
                                 </div>
                             </div>
 
+                            <!-- Filtro de datas, temos a data1, data2, que vai poder filtrar o período de datas que o cliente desejar -->
                             <div class="col-md-6">
-                                <div class="form-row">
+                                <div class="form-row" style="margin-right:35px">
                                     <h5>Data:</h5>
-                                    <input class="data-input" type="date" name="pesqdata" style="height:30px"
-                                        maxlength="8" value="<?php echo $pesqdata; ?>">
+                                    <!-- Data 1 -->
+                                    <input class="data-input" type="date" name="pesqdata1" style="height:30px"
+                                        maxlength="8" value="<?php echo $pesqdata1; ?>">
+                                        <h5 class="between-inputs">ao</h5>
+                                    <!-- Data 2 -->
+                                    <input class="data-input" type="date" name="pesqdata2" style="height:30px;"
+                                    maxlength="8" value="<?php echo $pesqdata2; ?>">
                                 </div>
                             </div>
                         </div>
