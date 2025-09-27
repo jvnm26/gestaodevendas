@@ -223,7 +223,7 @@ $result = mysqli_query($con, $sql);
 
                     </div>
                     <div class="col-auto">
-                        <a href="lanselect.php" class="btn btn-secondary rounded-pill py-2 px-3">Limpar</a>
+                        <a href="lancselect.php" class="btn btn-secondary rounded-pill py-2 px-3">Limpar</a>
                         <button class="btn btn-secondary rounded-pill py-2 px-3" type="submit" name="submit">Pesquisar</button>
                         <a href="lancinsert.php" class="btn btn-secondary rounded-pill py-2 px-3">Inclusão</a>
                     </div>

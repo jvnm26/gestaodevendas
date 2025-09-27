@@ -3,17 +3,17 @@ session_start();
 include('verificalogin.php');
 include('connect.php');
 
-// Query SQL padrão para listar todos os usuários
+// Query SQL padrão para listar todos as despesas
 $sql = 'SELECT * FROM tipodespesa ORDER BY nome ASC';
 
 // Pesquisa por nome
 $pesqnome = '';
 if (isset($_POST['submit'])) {
     $pesqnome = mysqli_real_escape_string($con, $_POST['pesqnome']);
-    // Consulta para buscar usuários com base no nome fornecido
+    // Consulta para buscar tipos despesas com base no nome fornecido
     $sql = "SELECT * FROM tipodespesa WHERE nome LIKE '%$pesqnome%' ORDER BY nome ASC";
 } else {
-    // Consulta padrão para listar todos os usuários
+    // Consulta padrão para listar todos os tiposdespesasus
     $sql = 'SELECT * FROM tipodespesa ORDER BY nome ASC';
 }
 
@@ -249,10 +249,10 @@ $result = mysqli_query($con, $sql);
                             <td>" . $row['id'] . "</td>
                             <td>" . $row['nome'] . "</td>
                             <td>
-                               <a href='admupdate.php?updateid={$row['id']}' class='btn btn-sm btn-primary'>
+                               <a href='tpdupdate.php?updateid={$row['id']}' class='btn btn-sm btn-primary'>
                         <i class='bi bi-pencil-square'></i> Alterar
                       </a>
-                      <a href='admdelete.php?deleteid={$row['id']}' class='btn btn-sm btn-danger'>
+                      <a href='tpddelete.php?deleteid={$row['id']}' class='btn btn-sm btn-danger'>
                         <i class='bi bi-trash'></i> Excluir
                       </a>
                             </td>

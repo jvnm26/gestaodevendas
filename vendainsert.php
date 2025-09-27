@@ -10,7 +10,6 @@ if (isset($_POST['submit'])) {
     $datavenda = $_POST['datavenda'];
     $precocusto = $_POST['precocusto'];
     $preco = $_POST['preco'];
-
     $sql = "INSERT INTO `venda`(`idproduto`, `idvendedor`, `idcliente`, `quantidade`, `datavenda`, `preco`, `precocusto`) VALUES ('$idproduto','$idvendedor','$idcliente','$quantidade','$datavenda','$preco','$precocusto')";
     $result = mysqli_query($con, $sql);
     if ($result) {
@@ -32,13 +31,6 @@ if (isset($_POST['submit'])) {
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -49,26 +41,61 @@ if (isset($_POST['submit'])) {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
+    
 </head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    .space-mono-regular {
+      font-family: "Space Mono", monospace;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .space-mono-bold {
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .space-mono-regular-italic {
+      font-family: "Space Mono", monospace;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .space-mono-bold-italic {
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-style: italic;
+    }
+    .h1{
+        font-family: monospace;
+    }
+</style>
 
 <body>
 
     <!-- Aqui é o Nome da Empresa e abaixo os botões Menu e Sair para voltar ou sair do sistema -->
-                <div class="col" style="margin-left: 200px; margin-top: 40px">
-                    <h1>Superar</h1>
-                    <div>
-                        <a href="menu.php"><strong style="font-size: 20px;">Menu</strong></a><br><br>
-                        <a href="logout.php"><strong style="font-size: 20px;">Sair</strong></a><br><br>
-                    </div>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top px-4 px-lg-5">
+        <h1 class="h1">Superar</h1>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="menu.php" class="nav-item nav-link active">Menu</a>
+                <a href="logout.php" class="nav-item nav-link active">Sair</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Page Header Start -->
     <div class="container-form-post">
         <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s">
             <div class="container p-3">
                 <div class="container text-center py-2">
-                    <h1>Incluir Venda</h1>
+                    <h1 class="h1">Incluir Venda</h1>
                 </div>
 
                 <form action="" method="post" class="mt-3">
@@ -124,7 +151,7 @@ if (isset($_POST['submit'])) {
                     <!-- Quantidade -->
                     <div class="mb-3">
                         <label for="quantidade" class="form-label">Quantidade vendida:</label>
-                        <input type="text" name="quantidade" class="form-control" required>
+                        <input type="number" name="quantidade" class="form-control" required>
                     </div>
                     <!-- Data da venda -->
                     <div class="col form-group">

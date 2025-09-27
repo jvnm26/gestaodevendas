@@ -253,7 +253,7 @@ if (isset($_POST['submit'])) {
                         <!-- Valor -->
                         <div class="col-md-6">
                             <label for="valor">Valor</label>
-                            <input type="text" name="valor" class="form-control" required>
+                            <input type="number" name="valor" class="form-control" required>
                         </div>
 
                         <!-- Data da Despesa -->

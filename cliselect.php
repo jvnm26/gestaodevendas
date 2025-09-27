@@ -7,13 +7,13 @@ include('connect.php');
 $sql = 'SELECT id, nome, email, whatsapp, endereco, bairro, cidade, uf
   from cliente ORDER BY nome ASC';
 
-// Pesquisa por nome
+// Área que vai efetuar a pesquisa pelo nome do cliente
 $pesqnome = '';
 if (isset($_POST['submit'])) {
     $pesqnome = mysqli_real_escape_string($con, $_POST['pesqnome']);
     // Consulta para buscar usuários com base no nome fornecido
-    $sql = $sql = 'SELECT id, nome, email, whatsapp, endereco, bairro, cidade, uf
-    from cliente ORDER BY nome ASC WHERE t.nome LIKE ' % $pesqnome % ' ORDER BY t.nome ASC';
+    $sql = $sql = "SELECT id, nome, email, whatsapp, endereco, bairro, cidade, uf
+    from cliente WHERE nome LIKE '%$pesqnome%' ORDER BY nome ASC";
 }
 
 $result = mysqli_query($con, $sql);
@@ -33,13 +33,6 @@ $result = mysqli_query($con, $sql);
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -57,9 +50,37 @@ $result = mysqli_query($con, $sql);
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
+    <!-- Parte do João Estevão -->
     <style>
-        /* Container de sugestões */
+       /* FONTE */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        .space-mono-regular {
+            font-family: "Space Mono", monospace;
+            font-weight: 400;
+            font-style: normal;
+          }
+
+          .space-mono-bold {
+            font-family: "Space Mono", monospace;
+            font-weight: 700;
+            font-style: normal;
+          }
+
+          .space-mono-regular-italic {
+            font-family: "Space Mono", monospace;
+            font-weight: 400;
+            font-style: italic;
+          }
+
+          .space-mono-bold-italic {
+            font-family: "Space Mono", monospace;
+            font-weight: 700;
+            font-style: italic;
+          }
+        .h1,h2,h3,h4,h5,h6,p{
+            font-family: monospace;
+        }
+        /* Área principal de customizar as tabelas do projeto: */
         #suggestions {
             position: absolute;
             /* Fica posicionado em relação ao input */
@@ -134,11 +155,14 @@ $result = mysqli_query($con, $sql);
             width: 100%;
             border-collapse: collapse;
             background: #fff;
-            font-family: "Poppins", sans-serif;
+            font-family: monospace;
             font-size: 15px;
             color: #333;
         }
 
+        .td{
+            font-family: monospace;
+        }
         thead {
             background: #404A3D;
             color: #fff;
@@ -192,17 +216,59 @@ $result = mysqli_query($con, $sql);
         .btn-delete:hover {
             background: #dc2626;
         }
+
+        /* Esta é todo Style do vendaselect */
+        /* Local para arrumar a área de pesquisa, alinhando os títulos, alinhando os imputs e definindo o tamanho dos mesmos */
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            gap: 5px;
+        }
+
+        .form-row h5 {
+            color: white;
+            width: 200px;
+            text-align: right;
+            margin: 0;
+            padding-right: 5px;
+        }
+
+        .form-row input {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 650px;
+            
+        }
+        
+        .form-row input.data-input {
+            width: 130px;
+            font-family: monospace;
+            margin-right: 210px;
+        }
+        
+        .col input[type="date"] {
+            max-width: 150px;
+            font-family: monospace;
+        }
+        .data-input {
+            width: 50px;
+            font-family: monospace;
+        }
+
+        .col input[type="text"] {
+            max-width: 740px;
+        }
+        /* Aqui acaba todo Style do vendaselect */
     </style>
-    </style>
+    
 </head>
 
 <body>
-    <!-- Navbar Start -->
+    <!-- Cabeçalho de navegação -->
     <nav class="navbar navbar-expand-lg  navbar-light sticky-top px-4 px-lg-5">
         <h1 class="m-0">Superar</h1>
-        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="menu.php" class="nav-item nav-link">Menu</a>
@@ -230,7 +296,7 @@ $result = mysqli_query($con, $sql);
                         </div>
                     </div>
                     <div class="col-auto">
-                        <a href="lanselect.php" class="btn btn-secondary rounded-pill py-2 px-3">Limpar</a>
+                        <a href="cliselect.php" class="btn btn-secondary rounded-pill py-2 px-3">Limpar</a>
                         <button class="btn btn-secondary rounded-pill py-2 px-3" type="submit" name="submit">Pesquisar</button>
                         <a href="cliinsert.php" class="btn btn-secondary rounded-pill py-2 px-3">Inclusão</a>
                     </div>
@@ -243,14 +309,12 @@ $result = mysqli_query($con, $sql);
         <table class="table table-striped table-hover align-middle">
             <thead>
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Whatsapp</th>
-                    <th scope="col">Endereço</th>
-                    <th scope="col">Bairro</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">UF</th>
-                    <th scope="col">Operações</th>
+                    <?php 
+                    $lista = ['Nome', 'Email', 'Whatsapp', 'Endereço', 'Bairro', 'Cidade', 'UF', 'Operações'];
+                    for ($lc=0; $lc < count($lista); $lc++) { 
+                        echo"<th scope='col'>" . $lista[$lc] . "</th>";
+                    }
+                    ?>
                 </tr>
             </thead>
             <tbody>
@@ -287,7 +351,6 @@ $result = mysqli_query($con, $sql);
     </div>
 
     <!-- Page Header End -->
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

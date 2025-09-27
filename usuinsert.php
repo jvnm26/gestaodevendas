@@ -101,9 +101,9 @@ if (isset($_POST['submit'])) {
                         <!-- Administrador -->
                         <div class="col-md-6">
                             <label for="master">Administrador:</label>
-                            <select class="form-control" name="master" required>
+                            <select class="" name="master" style="width:200px;" required>
                                 <option value="s">SIM</option>
-                                <option value="n">NÃO</option>
+                                <option value="n">NÃO</option> 
                             </select>
                         </div>
                     </div>

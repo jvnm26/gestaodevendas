@@ -6,22 +6,15 @@ include('connect.php');
 // Query SQL padrão para listar todas as entrada
 $sql = 'select e.id, p.nome nome, e.dataentrada as data, e.preco preco, e.quantidade quantidade from entradaestoque e
 inner join produto p 
-on p.id = e.idproduto;';
+on p.id = e.idproduto';
 
 // Pesquisa por entrada
 $pesqnome = '';
 if (isset($_POST['submit'])) {
     $pesqnome = mysqli_real_escape_string($con, $_POST['pesqnome']);
     // Consulta para buscar entrada com base no nome fornecido
-    $sql = "select e.id, p.nome nome, e.dataentrada as data, e.preco preco, e.quantidade quantidade from entradaestoque e
-    inner join produto p 
-    on p.id = e.idproduto;";
-} else {
-    // Consulta padrão para listar todas as entrada
-    $sql = 'select e.id, p.nome nome, e.dataentrada as data, e.preco preco, e.quantidade quantidade from entradaestoque e
-    inner join produto p 
-    on p.id = e.idproduto;';
-}
+    $sql = $sql . " where p.nome like '%$pesqnome%'";
+} 
 
 $result = mysqli_query($con, $sql);
 ?>

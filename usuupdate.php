@@ -251,8 +251,8 @@ if (isset($_POST['submit'])) {
                             <h5 style="color: white;">Administrador:</h5>
                         </div>
                     </div>
-                    <div class="col" style="margin-right: 810px;"> <br><br>
-                        <select name="master" id="admin" class="form-select" required>
+                    <div class="col" style="margin-right: 700px; width: 500px"> <br><br>
+                        <select name="master" id="admin" class="form-select" required style=" width: 85px">
                         <option value="S" <?php if($master=='S') {echo 'selected';}  ?>>Sim</option>
                         <option value="N" <?php if($master=='N') {echo 'selected';}  ?>>Não</option>
                         </select>
@@ -268,9 +268,6 @@ if (isset($_POST['submit'])) {
                 </div>
                 <br><br>
                 <div class="row" style="background-color: #556152;">
-                    <div class="col">
-                        <button class="btn btn-secondary rounded-pill py-3 px-5" type="button" onclick="window.location.href='menu.php'"> Voltar</button>
-                    </div>
                     <div class="col">
                     <?php
                         echo
