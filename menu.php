@@ -122,8 +122,13 @@ include('verificalogin.php');
             <!-- Menu -->
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a href="consultageral.php" class="btn-sidebar mb-3 d-flex align-items-center">
-                        <img src="img/calendario-linhas-caneta.png" alt=""> Consulta Geral
+                    <a href="vendaselect.php" class="btn-sidebar mb-3 d-flex align-items-center">
+                        <img src="img/calendario-linhas-caneta.png" alt=""> Vendas
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="lancselect.php" class="btn-sidebar mb-3 d-flex align-items-center">
+                        <img src="img/saco-de-dolar.png" alt=""> Lançamento de despesas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
@@ -142,12 +147,6 @@ include('verificalogin.php');
                         Cliente
                     </a>
                 </li>
-                <li class="nav-item mb-2">
-                    <a href="vendaselect.php" class="btn-sidebar mb-3 d-flex align-items-center">
-                        <img src="img/comercial.png" alt="">
-                        Venda
-                    </a>
-                </li>
                 </li>
                 <li class="nav-item mb-2">
                     <a href="tpdselect.php" class="btn-sidebar mb-3 d-flex align-items-center">
@@ -156,14 +155,8 @@ include('verificalogin.php');
                 </li>
 
                 <li class="nav-item mb-2">
-                    <a href="lancselect.php" class="btn-sidebar mb-3 d-flex align-items-center">
-                        <img src="img/saco-de-dolar.png" alt=""> Lançamento de despesas
-
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
                     <a href="entrselect.php" class="btn-sidebar mb-3 d-flex align-items-center">
-                        <img src="img/sair-alt.png" alt=""> Estoque
+                        <img src="img/sair-alt.png" alt=""> Entrada de Estoque
                     </a>
                 </li>
                 <li class="nav-item mb-2">
@@ -172,9 +165,27 @@ include('verificalogin.php');
                         Usuários
                     </a>
                 </li>
-                <li class="nav-item mb-2">
-                    <a href="logout.php" style="font-size: 20px; color: red">Sair</a><br><br>
+
+                <li class="nav-item">
+                    <a href="logout.php" class="btn-sidebar mb-3 d-flex align-items-center">
+                        <img src="img/sair.png" alt="">
+                        Sair
+                    </a>
                 </li>
+                <li class="nav-item mb-2">
+                    <a class="btn-sidebar mb-3 d-flex align-items-center" data-bs-toggle="collapse" href="#configSubmenu"
+                        role="button" aria-expanded="false" aria-controls="configSubmenu">
+                        <img src="img/configuracoes.png" alt="">
+                        Configurações
+                    </a>
+                    <div class="collapse ps-4" id="configSubmenu">
+                        <a href="aparencia.php" class="btn-sidebar d-flex align-items-center mb-2">🎨 Aparência</a>
+                        <a href="seguranca.php" class="btn-sidebar d-flex align-items-center mb-2">🔒 Segurança</a>
+                    </div>
+                </li>
+
+
+
             </ul>
         </div>
 
@@ -183,7 +194,7 @@ include('verificalogin.php');
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.2s" style="max-width: 500px;">
-                        <p class="section-title bg-transparent text-center text-primary px-3">Bem vindo!</p>
+                        <p class="section-title bg-transparent text-center text-primary px-3">Bem-vindo!</p>
                     </div>
                 </div>
             </div>
